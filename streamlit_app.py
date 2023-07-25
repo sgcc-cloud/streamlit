@@ -1,30 +1,39 @@
-# Title of the event
-st.title('Registration for Event ABC')
+import streamlit as st
 
-# Description
-st.write("""
-Kindly click the link below to register for the event.
-The event is limited to 10 pax.
-""")
+def main():
+    # Title of the event
+    st.title('Welcome to UWC Ticket Booking Registration')
 
-# Check if the queue counter exceeds the limit
-if st.session_state.queue_counter <= 10:
-
-    registration_link = f"https://form.gov.sg/64bfbe8bf8b1ef0011d9a0df?64bfbebb7b53ad0011459dde={st.session_state.queue_counter}"
-    
-    # Using markdown to style the link as a button and display the queue counter without target="_blank"
-    button_code = f'<a href="{registration_link}" target="_self" style="padding: 10px 20px; background-color: #FF2E63; color: white; border-radius: 4px; text-decoration: none;">Register</a>'
-    st.markdown(button_code, unsafe_allow_html=True)
-    
-    st.write(f"Queue Number: {st.session_state.queue_counter}")
-
-    # Increment the queue counter for the next person
-    st.session_state.queue_counter += 1
-    st_autorefresh(interval=1, limit=1)  # Refresh the page every 1 second
-
-
-else:
+    # Description
     st.write("""
-    Due to overwhelming response, the event has been fully registered.
-    You may email to [abc@gov.sg](mailto:abc@gov.sg) to check if there are any more vacancies for the event.
+    Kindly click the link below to register for the event.
+    The event is limited to 300 pax.
     """)
+
+    # Counter to keep track of visits
+    visit_counter = st.session_state.get('visit_counter', 0)
+
+    # Register button
+    if visit_counter < len(url_list):
+        url_list = [
+            "google.com",
+            "yahoo.com",
+            "outlook.com",
+            "hotmail.com",
+            "gmail.com",
+            # Add the remaining 27 URLs here
+        ]
+        next_url = url_list[visit_counter]
+        registration_link = f"<a href='{next_url}' target='_blank'>Register</a>"
+        st.markdown(registration_link, unsafe_allow_html=True)
+    else:
+        st.write("Fully Booked")
+
+    # Display the visit counter
+    st.write(f"Total Visits: {visit_counter}")
+
+    # Increment the visit counter for the next person
+    st.session_state.visit_counter = visit_counter + 1
+
+if __name__ == '__main__':
+    main()
