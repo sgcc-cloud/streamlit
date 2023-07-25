@@ -15,11 +15,11 @@ def main():
 
     # Define the list of URLs
     url_list = [
-        "google.com",
-        "yahoo.com",
-        "outlook.com",
-        "hotmail.com",
-        "gmail.com",
+        "https://www.google.com/",
+        "https://www.yahoo.com",
+        "https://www.outlook.com",
+        "https://www.hotmail.com",
+        "https://www.gmail.com",
         # Add the remaining 27 URLs here
     ]
 
