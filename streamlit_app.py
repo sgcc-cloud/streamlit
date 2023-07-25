@@ -13,16 +13,18 @@ def main():
     # Counter to keep track of visits
     visit_counter = st.session_state.get('visit_counter', 0)
 
+    # Define the list of URLs
+    url_list = [
+        "google.com",
+        "yahoo.com",
+        "outlook.com",
+        "hotmail.com",
+        "gmail.com",
+        # Add the remaining 27 URLs here
+    ]
+
     # Register button
     if visit_counter < len(url_list):
-        url_list = [
-            "google.com",
-            "yahoo.com",
-            "outlook.com",
-            "hotmail.com",
-            "gmail.com",
-            # Add the remaining 27 URLs here
-        ]
         next_url = url_list[visit_counter]
         registration_link = f"<a href='{next_url}' target='_blank'>Register</a>"
         st.markdown(registration_link, unsafe_allow_html=True)
